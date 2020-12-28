@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>{{object.Greeting_Title}}</h1>
-    By- {{object.author}}
-    <a class="btn btn-primary"  href="{% url 'edit_Greeting' object.pk %}" >UPDATE</a>
-    <a class="btn btn-secondary" href="{% url 'delete_Greeting' object.pk %}">DELETE</a>
-<hr>
-<br/>
-{{object.message}}
+    <h1>{{object.Greeting_Title}}</h1>
+    <p><small>({{object.greeting_date}})</small></p>
+    <hr>
+    <p>{{object.message}}</p>
+    {% if user.is_authenticated %}
+        {%if user.id == object.author.id%}
+            <a class="btn btn-primary" href="{% url 'edit_Greeting' object.pk %}">UPDATE</a>
+            <a class="btn btn-secondary" href="{% url 'delete_Greeting' object.pk %}">DELETE</a>
+        {%endif%}
+    {%endif%}
 {% endblock %}
+

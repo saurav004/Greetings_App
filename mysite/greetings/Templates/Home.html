@@ -2,21 +2,27 @@
 
 {% block content %}
 
+<style>
+
+</style>
 
 <h1>Greetings Home</h1>
-
-
-{% for greeting in object_list %}
-        <a class="card-decks col-3" href="{% url 'SingleGreeting' greeting.pk %}">
+    {% for greeting in object_list %}
+        <div class="card col-lg-3 col-sm-12 col-md-6 ">
             <div class="card-body">
                 <h4 class="card-title">{{ greeting.Greeting_Title }}</h4>
-                <p class="card-text">By-{{ greeting.author}} </p>
-                <p class="card-text">{{ greeting.message }}</p>
-                <a class="btn btn-primary" href="{% url 'edit_Greeting' greeting.pk %}" role="button">UPDATE</a>
-                <a class="btn btn-secondary" href="{% url 'delete_Greeting' greeting.pk %}" role="button">DELETE</a>
+                <hr>
+                <a href="{% url 'SingleGreeting' greeting.pk %}" class="card-link">
+                    <p class="card-text">{{ greeting.message| slice:":40" }}</p>
+                    <p><small>({{ greeting.greeting_date}})</small></p>
+                </a>
+                {% if user.is_authenticated %}
+                    {%if user.id == greeting.author.id%}
+                        <a class="btn btn-primary " href="{% url 'edit_Greeting' greeting.pk %}" role="button">EDIT</a>
+                        <a class="btn btn-secondary " href="{% url 'delete_Greeting' greeting.pk %}" role="button">DELETE</a>
+                    {%endif%}
+                {% endif %}
             </div>
-        </a>
-{% endfor %}
-
-
+        </div>
+    {% endfor %}
 {% endblock %}

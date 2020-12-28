@@ -2,7 +2,7 @@
 
 {% block content %}
 
-
+{% if user.is_authenticated %}
 <h1>Update Greeting</h1>
 
 <form method="POST">
@@ -10,6 +10,10 @@
     {{ form.as_p }}
     <button class="btn btn-primary">UPDATE</button>
 </form>
+{% else %}
+<br/>
+You are not allowed here , don't try to sneak in
+{%endif%}
 
 
 {% endblock %}

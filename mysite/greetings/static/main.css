@@ -1,37 +1,42 @@
 body {
-  background: #fafafa;
+  background-image: url('night_sky.jpg');
+  background-repeat:no-repeat;
   text-decoration: none;
-  color: #333333;
-  margin-top: 5rem;
+  background-size:cover;
+  color:white;
 }
-card-decks{
-    margin-bottom: 10px;
-    margin : 3rem
+.nav-right{
+    float: right;
+}
+A{text-decoration: none;}
+
+.card {
+  background-image: url('black.jpg');
+  text-align: center;
+  display: inline-grid;
+  margin: 3%;
+  border : none;
+  background-repeat:no-repeat;
+  background-size:cover;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #444444;
+.card-link{
+color:White;
 }
 
-ul {
-  margin: 0;
+h1,h2,h3,h4,h5,h6{
+text-align:center;
+margin:10px;
 }
 
-.bg-steel {
-  background-color: #5f788a;
+.card:hover{
+  transition: 0.3s;
+    box-shadow: 0 0 5px 5px aqua;
+
 }
 
-.site-header .navbar-nav .nav-link {
-  color: #cbd5db;
-}
 
-.site-header .navbar-nav .nav-link:hover {
-  color: #ffffff;
-}
 
-.site-header .navbar-nav .nav-link.active {
-  font-weight: 500;
-}
 
 .content-section {
   background: #ffffff;
@@ -39,51 +44,4 @@ ul {
   border: 1px solid #dddddd;
   border-radius: 3px;
   margin-bottom: 20px;
-}
-
-.article-title {
-  color: #444444;
-}
-
-a.article-title:hover {
-  color: #428bca;
-  text-decoration: none;
-}
-
-.article-content {
-  white-space: pre-line;
-}
-
-.article-img {
-  height: 65px;
-  width: 65px;
-  margin-right: 16px;
-}
-
-.article-metadata {
-  padding-bottom: 1px;
-  margin-bottom: 4px;
-  border-bottom: 1px solid #e3e3e3
-}
-
-.article-metadata a:hover {
-  color: #333;
-  text-decoration: none;
-}
-
-.article-svg {
-  width: 25px;
-  height: 25px;
-  vertical-align: middle;
-}
-
-.account-img {
-  height: 125px;
-  width: 125px;
-  margin-right: 20px;
-  margin-bottom: 16px;
-}
-
-.account-heading {
-  font-size: 2.5rem;
 }

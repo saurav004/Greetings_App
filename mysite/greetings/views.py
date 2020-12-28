@@ -3,21 +3,27 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import GreetingClass
 
+# Logger imports
+import logging, traceback
+
 # rest api imports
 from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
 from .serializers import GreetingClassSerializer
+
+logger = logging.getLogger('django')
 
 
 class HomeView(ListView):
+    logger.info("Home Start")
     model = GreetingClass
     template_name = 'Home.html'
-    ordering = ['-id']
+    ordering = ['-greeting_date']
 
 
 class DetailedView(DetailView):
+    logger.info("Single Greeting View Start")
     model = GreetingClass
     template_name = 'SingleGreeting.html'
 
@@ -26,19 +32,23 @@ class AddView(CreateView):
     model = GreetingClass
     template_name = 'addGreeting.html'
     fields = '__all__'
+    logger.info("Greeting Added")
 
 
 class EditView(UpdateView):
     model = GreetingClass
     template_name = 'edit_greeting.html'
-    fields = ['Greeting_Title', 'message']
+    fields = '__all__'
+    logger.info("Greeting Edited")
 
 
 class RemoveView(DeleteView):
+
     model = GreetingClass
     template_name = 'delete_post.html'
     fields = ['Greeting_Title', 'message']
     success_url = reverse_lazy('greetings_home')
+    logger.info("Greeting Deleted")
 
 
 class GreetingList(APIView):
